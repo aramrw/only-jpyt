@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "YT-JP-Only",
+  "version": "1.0.0",
+  "description": "Only displays Japanese videos on youtube for immersion.",
+  "icons": {
+    "16": "public/16.png",
+    "32": "public/32.png",
+    "48": "public/48.png",
+    "128": "public/128.png"
+  },
+  "action": {
+    "default_popup": "/popup.html",
+    "default_icon": {
+      "16": "public/16.png",
+      "32": "public/32.png",
+      "48": "public/48.png",
+      "128": "public/128.png"
+    }
+  },
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["./dist/contentscript.js"],
+      "css": ["./styles/content.css"]
+    }
+  ]
+}
