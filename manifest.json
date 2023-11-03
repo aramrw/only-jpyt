@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "YT-JP-Only",
+  "name": "Only-Japanese-Youtube",
   "version": "1.0.0",
   "description": "Only displays Japanese videos on youtube for immersion.",
   "icons": {
