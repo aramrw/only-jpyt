@@ -8,6 +8,7 @@ const handleYoutubeLoaded = () => {
             const richGridRow = link.closest('ytd-rich-grid-row');
             const sectionRenderer = link.closest('ytd-video-renderer');
 
+
             // remove all shorts videos
             const shortsRenderer = link.closest('ytd-reel-shelf-renderer');
             if (shortsRenderer) {
@@ -33,16 +34,18 @@ function containsJapaneseCharacter(text: string) {
     return /[一-龯ぁ-んァ-ヶ]/.test(text);
 }
 
-
 // get the state of the toggle button from local storage
 if (localStorage.getItem('disabled') === 'true') {
-    localStorage.setItem('disabled', 'true');
     const mutationObserver = new MutationObserver(handleYoutubeLoaded);
     mutationObserver.observe(document, {
         childList: true,
         subtree: true
     });
+    console.log('enabling');
 } else {
+    const mutationObserver = new MutationObserver(handleYoutubeLoaded);
+    mutationObserver.disconnect();
+    console.log('disabling');
     // do nothing since the program is disabled
 }
 
@@ -50,9 +53,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if (request.message === "enable") {
         localStorage.setItem('disabled', 'false');
+
+        window.location.reload();
+
     } else {
         localStorage.setItem('disabled', 'true');
-        // do nothings since the program is disabled
+
+        window.location.reload();
+
     }
 })
 
