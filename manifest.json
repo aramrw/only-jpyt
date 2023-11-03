@@ -18,7 +18,12 @@
       "128": "public/128.png"
     }
   },
-  "permissions": ["activeTab"],
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "tabs"
+  ],
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
